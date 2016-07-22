@@ -1,5 +1,6 @@
 <h1>My Trips</h1>
-<%= link_to 'New trip', new_trip_path %>
+
+<h3>Pending Trips</h3>
 <table>
 	<tr>
 		<th>Child Name</th>
@@ -18,10 +19,11 @@
 	  	<td><%= @time %></td>
 	  	<td><%= trip.trip_complete %></td>
 	    <td><%= @time %></td>
-	  	<td><%= link_to 'Show', trip_path(trip) %></td>
+	  	<td><%= link_to 'View', trip_path(trip) %></td>
 	  	<td><%= link_to 'Edit', edit_trip_path(trip) %></td>
 	  	<td><%= link_to 'Destroy', trip_path(trip), method: :delete, data: { confirm: 'Are you sure?'} %></td>
 	  </tr>
 	<% end %>
 </table>
-
+<p>
+<%= link_to 'New Trip', new_trip_path %>
