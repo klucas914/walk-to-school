@@ -1,17 +1,14 @@
 class TripsController < ApplicationController
   def index
-  	@trips = Trip.all
-  	@time = Time.now.strftime(' %B %d, %Y %I:%M %p')
+  	@trips = Trip.where("arrival_time IS NULL")
   end
 
   def show
     @trip = Trip.find(params[:id])
-    @time = Time.now.strftime(' %B %d, %Y %I:%M %p')
   end
 
   def new
   	@trip = Trip.new
-  	@time = Time.now.strftime(' %B %d, %Y %I:%M %p')
   end
 
   def edit
@@ -20,7 +17,6 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    @time = Time.now.strftime(' %B %d, %Y %I:%M %p')
 
     if @trip.save
       redirect_to @trip
@@ -44,6 +40,21 @@ class TripsController < ApplicationController
     @trip.destroy
 
     redirect_to trips_path
+  end
+
+  def arrive
+    @trip = Trip.find(params[:id])
+
+    if @trip.update(arrival_time: Time.now)
+      flash[:notice] = "#{@trip.child_name} successfully arrived!"
+      redirect_to trips_path
+    else
+      flash[:alert] = "There was an error marking this child as arrived. Please try again." 
+    end
+  end
+
+  def archived
+        @trips = Trip.where("arrival_time IS NOT NULL")
   end
 
   private

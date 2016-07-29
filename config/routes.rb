@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   
-  resources :trips
+  resources :trips do 
+    member do
+      post :arrive
+    end
+    collection do
+      get :archived
+    end
+  end
+  resources :archives
 
   root 'home#index'
 

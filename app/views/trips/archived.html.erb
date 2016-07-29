@@ -1,13 +1,16 @@
-<h2>Pending Trips</h2>
+<h2>Completed Trips</h2>
+
+
+<p>
 <table class="table table-bordered">
 	<tr>
 		<th>Child Name</th>
 		<th>Starting Point</th>
 		<th>Destination</th>
 		<th>Departure Time</th>
-
-		<!--<th>Trip Complete?</th>
-		<!--<th>Arrival Time:</th> -->
+		<!--<th>Trip Complete?</th>-->
+		<th>Arrival Time</th>
+		<th>Trip Duration</th>
 	</tr>
 
 	<% @trips.each do |trip| %>
@@ -16,19 +19,14 @@
 	  		<td><%= trip.child_name %></td>
 	  		<td><%= trip.starting_point %></td>
 	  		<td><%= trip.destination %></td>
-	  		<td><%= time_ago_in_words(trip.created_at)%> ago</td>
+	  		<td><%= trip.created_at.strftime('%B %d %I:%M %p') %></td>
 	  		<!--<td><%= trip.trip_complete %></td>
 	    	<!--<td><%= trip.updated_at.strftime('%B %d, %Y %I:%M %p') %></td> -->
-	  		<td><%= link_to 'View', trip_path(trip) %></td>
-	  		<td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-	  		<td><%= link_to 'Destroy', trip_path(trip), method: :delete, data: { confirm: 'Are you sure?'} %></td>
-	  		<td><%= button_to 'Arrived', arrive_trip_path(trip) %></td>
+	    	<td><%= trip.arrival_time.strftime('%B %d %I:%M %p') %></td>
+	    	<td><%= TimeDifference.between(trip.created_at, trip.arrival_time).in_minutes.round %> minutes</td>
 	  	</tr>
 	 <% end %>
 </table>
 <p>
 <%= link_to 'New Trip', new_trip_path %><p>
-<%= link_to 'Completed Trips', archived_trips_path %>
-
-
- 
+<%= link_to 'Back', trips_path %>

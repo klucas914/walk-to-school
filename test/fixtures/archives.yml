@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  child_name: MyString
+  starting_point: MyString
+  destination: MyString
+  departure_time: 2016-07-26 10:10:50
+  arrival_time: 2016-07-26 10:10:50
+  trip_complete: false
+  trip_id: 
+
+two:
+  child_name: MyString
+  starting_point: MyString
+  destination: MyString
+  departure_time: 2016-07-26 10:10:50
+  arrival_time: 2016-07-26 10:10:50
+  trip_complete: false
+  trip_id: 
