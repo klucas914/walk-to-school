@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730010324) do
+ActiveRecord::Schema.define(version: 20160730034730) do
 
   create_table "archives", force: :cascade do |t|
     t.string   "child_name"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 20160730010324) do
   end
 
   add_index "children", ["trip_id"], name: "index_children_on_trip_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "trips", force: :cascade do |t|
     t.string   "child_name"
