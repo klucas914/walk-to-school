@@ -59,6 +59,6 @@ class TripsController < ApplicationController
 
   private
     def trip_params
-    	params.require(:trip).permit(:child_name, :starting_point, :destination, :departure_time, :arrival_time, :trip_complete)
+    	params.require(:trip).permit(:child_name, :starting_point, :destination, :departure_time, :arrival_time, :trip_complete, :child_id, :location_id)
     end
 end

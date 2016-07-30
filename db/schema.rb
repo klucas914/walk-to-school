@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730034730) do
+ActiveRecord::Schema.define(version: 20160730113224) do
 
   create_table "archives", force: :cascade do |t|
     t.string   "child_name"
@@ -34,16 +34,23 @@ ActiveRecord::Schema.define(version: 20160730034730) do
     t.integer  "trip_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "location_id"
   end
 
+  add_index "children", ["location_id"], name: "index_children_on_location_id"
   add_index "children", ["trip_id"], name: "index_children_on_trip_id"
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "trips_id"
+    t.integer  "children_id"
   end
+
+  add_index "locations", ["children_id"], name: "index_locations_on_children_id"
+  add_index "locations", ["trips_id"], name: "index_locations_on_trips_id"
 
   create_table "trips", force: :cascade do |t|
     t.string   "child_name"
@@ -54,6 +61,11 @@ ActiveRecord::Schema.define(version: 20160730034730) do
     t.datetime "departure_time"
     t.datetime "arrival_time"
     t.boolean  "trip_complete"
+    t.integer  "child_id"
+    t.integer  "location_id"
   end
+
+  add_index "trips", ["child_id"], name: "index_trips_on_child_id"
+  add_index "trips", ["location_id"], name: "index_trips_on_location_id"
 
 end

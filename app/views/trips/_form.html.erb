@@ -16,17 +16,17 @@
 
   <p>
 	<%= f.label :child_name %><br>
-	<%= f.text_field :child_name  %>
+	<%= f.select :child_id, options_for_select(Child.all.map{|s| [s.child_name]})  %>
   </p>
 
   <p>
   	<%= f.label :starting_point %><br>
-  	<%= f.text_field :starting_point %>
+  	<%= f.select :location_id, options_for_select(Location.all.map{|s| [s.name]}) %>
   </p>
 
   <p>
 	<%= f.label :destination %><br>
-	<%= f.text_field :destination %>
+	<%= f.select :location_id, options_for_select(Location.all.map{|s| [s.name]}) %>
   </p>
   <p>
 	<%= f.submit %>
