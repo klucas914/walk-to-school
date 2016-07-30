@@ -1,0 +1,21 @@
+<h2>My Children</h2>
+<table class="table table-bordered">
+	<tr>
+		<th>Child Name</th>
+		<th>Birthdate</th>
+		<th>Image</th>
+	</tr>
+
+	<% @children.each do |child| %>
+	 
+	  	<tr>
+	  		<td><%= child.child_name %></td>
+	  		<td><%= child.child_birthdate %></td>
+	  		<!--<td><%= child.child_image %></td>-->
+	  		<td></td>
+	  		<td><%= link_to 'Edit', edit_child_path(child) %></td>
+	  		<td><%= link_to 'Destroy', child_path(child), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+	  	</tr>
+	 <% end %>
+</table>
+<%= link_to 'Add a New Child', new_child_path %><p>

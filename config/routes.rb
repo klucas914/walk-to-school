@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :archives
+  resources :children
 
   root 'home#index'
 

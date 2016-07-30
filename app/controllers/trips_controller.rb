@@ -54,7 +54,7 @@ class TripsController < ApplicationController
   end
 
   def archived
-        @trips = Trip.where("arrival_time IS NOT NULL")
+    @trips = Trip.where("arrival_time IS NOT NULL").reverse.each
   end
 
   private

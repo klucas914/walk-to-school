@@ -7,14 +7,6 @@
 	<%= @trip.created_at.strftime('%B %d, %Y %I:%M %p') %>
 </p>	
 
-<!--<strong>Trip Complete:</strong>
-	<%= @trip.trip_complete %>
-</p>
-
-<!-- <p>
-	<strong>Arrival Time:</strong>
-	<%= @trip.updated_at.strftime('%B %d, %Y %I:%M %p')  %>
-</p> -->
 
 <%= link_to 'Edit', edit_trip_path(@trip) %>
 <%= link_to 'Back', trips_path %>
