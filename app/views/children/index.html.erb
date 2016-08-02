@@ -4,6 +4,7 @@
 		<th>Child Name</th>
 		<th>Birthdate</th>
 		<th>Image</th>
+		<th>View Stats</th>
 	</tr>
 
 	<% @children.each do |child| %>
@@ -13,6 +14,7 @@
 	  		<td><%= child.child_birthdate %></td>
 	  		<!--<td><%= child.child_image %></td>-->
 	  		<td></td>
+	  		<td><%= link_to "#{child.child_name}'s Stats", stats_child_path(child) %></td>
 	  		<td><%= link_to 'Edit', edit_child_path(child) %></td>
 	  		<td><%= link_to 'Destroy', child_path(child), method: :delete, data: { confirm: 'Are you sure?'} %></td>
 	  	</tr>

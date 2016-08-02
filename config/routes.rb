@@ -9,8 +9,13 @@ Rails.application.routes.draw do
     end
   end
   resources :archives
-  resources :children
+  resources :children do
+    member do
+      get :stats
+    end
+  end
   resources :locations
+  resources :admin
 
   root 'home#index'
 

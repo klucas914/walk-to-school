@@ -42,9 +42,12 @@ class ChildrenController < ApplicationController
     redirect_to children_path
   end
 
+  def stats
+    @child = Child.find(params[:id])
+  end
 
   private
     def child_params
-    	params.require(:child).permit(:child_name, :child_birthdate, :child_image)
+    	params.require(:child).permit(:child_name, :child_birthdate, :child_image, :trip_id, :location_id)
     end
 end

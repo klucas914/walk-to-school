@@ -16,17 +16,17 @@
 
   <p>
 	<%= f.label :child_name %><br>
-	<%= f.select :child_id, options_for_select(Child.all.map{|s| [s.child_name]})  %>
+	<%= f.select :child_id, Child.all.pluck(:child_name) %>
   </p>
 
   <p>
   	<%= f.label :starting_point %><br>
-  	<%= f.select :location_id, options_for_select(Location.all.map{|s| [s.name]}) %>
+  	<%= f.select :location_id, Location.all.pluck(:name) %>
   </p>
 
   <p>
 	<%= f.label :destination %><br>
-	<%= f.select :location_id, options_for_select(Location.all.map{|s| [s.name]}) %>
+	<%= f.select :location_id, Location.all.pluck(:name) %>
   </p>
   <p>
 	<%= f.submit %>
